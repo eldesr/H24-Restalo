@@ -12,6 +12,7 @@ public class Main {
     public static HttpServer startServer() {
         final ResourceConfig rc = new ResourceConfig()
                 .register(new HealthResource());
+        System.out.println("hi");
 
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
     }
