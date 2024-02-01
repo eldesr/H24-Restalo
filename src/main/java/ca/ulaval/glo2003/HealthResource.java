@@ -21,6 +21,9 @@ import java.util.List;
 @Path("")
 public class HealthResource {
 
+    //Get header info: @HeaderParam("id") String _str in args, where "id" is the key of
+    // the header value needed and _str holds wanted value
+
     @GET
     @Path("health")
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,11 +56,16 @@ public class HealthResource {
     @POST
     @Path("products")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String productsPOST(String product){
-        /* return "New product titled: " + product.getTitle() + ", description: " + product.getDescription() + ", price: " + product.getPrice();*/
+    public String productsPOST(Product product){
+        String name = product.getTitle();
+        if(name == null){
+            System.out.println("allo");
+        }
+
+        return "New product titled: " + product.getTitle() + ", description: " + product.getDescription() + ", price: " + product.getPrice();
         /* return "New product " + product.getTitle();*/
-        String[] list = stringParser(product);
-        return product;
+        /*String[] list = stringParser(product);
+        return product;*/
     }
 
     private String[] stringParser(String string){
